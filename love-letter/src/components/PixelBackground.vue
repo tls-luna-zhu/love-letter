@@ -17,6 +17,7 @@ onMounted(() => {
 
   // Set canvas to full screen size
   function resizeCanvas() {
+    if (!canvas) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
@@ -52,8 +53,8 @@ onMounted(() => {
     time += 0.02;
     
     // Clear canvas
-    ctx.fillStyle = '#ffcce6';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx!.fillStyle = '#ffcce6';
+    ctx!.fillRect(0, 0, canvas!.width, canvas!.height);
     
     // Draw grid
     for (let y = 0; y < rows; y++) {
@@ -64,8 +65,8 @@ onMounted(() => {
         
         // Only draw some pixels for a sparse effect
         if (Math.random() > 0.7) {
-          ctx.fillStyle = colors[colorIndex];
-          ctx.fillRect(
+          ctx!.fillStyle = colors[colorIndex];
+          ctx!.fillRect(
             x * pixelSize, 
             y * pixelSize, 
             pixelSize, 
@@ -146,4 +147,4 @@ onMounted(() => {
   z-index: -1;
   image-rendering: pixelated;
 }
-</style> 
+</style>
